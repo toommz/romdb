@@ -9,4 +9,6 @@ Gem::Specification.new do |s|
   s.files       = ['lib/romdb.rb', 'lib/romdb/search.rb', 'lib/romdb/request.rb', 'lib/romdb/response.rb']
   s.homepage    = 'http://rubygems.org/gems/romdb'
   s.license     = 'MIT'
+
+  s.add_development_dependency 'rspec', '~> 3.5'
 end

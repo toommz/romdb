@@ -47,7 +47,7 @@ module ROMDb
     end
 
     def tomatoes(tomatoes)
-      append_to_request('tomatoes', tomatoes)
+      append_to_request('tomatoes', tomatoes.to_s)
       self
     end
 
