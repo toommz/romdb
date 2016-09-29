@@ -32,16 +32,19 @@ module ROMDb
     end
 
     def type(type)
+      return false unless param_permitted?(__callee__, type)
       append_to_request('type', type)
       self
     end
 
     def plot(plot)
+      return false unless param_permitted?(__callee__, plot)
       append_to_request('plot', plot)
       self
     end
 
     def response_type(response_type)
+      return false unless param_permitted?(__callee__, response_type)
       append_to_request('r', response_type)
       self
     end
@@ -59,6 +62,10 @@ module ROMDb
 
     def sanitize_request
       @request.gsub(/\&$/, '')
+    end
+
+    def param_permitted?(param, value)
+      ROMDb::Search.const_get("#{param.upcase}S").include?(value.to_sym)
     end
   end
 end

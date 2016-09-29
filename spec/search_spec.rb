@@ -25,4 +25,34 @@ describe ROMDb::Search do
     expect(search.instance_variable_get(:@request))
       .to eql('t=Blade+Runner&tomatoes=true&')
   end
+
+  it 'refuses unpermitted response types' do
+    expect(ROMDb::Search.new.title('Blade Runner').response_type('html'))
+      .to be false
+  end
+
+  it 'only accepts permitted response types' do
+    expect(ROMDb::Search.new.title('Blade Runner').response_type('json'))
+      .to be_a ROMDb::Search
+  end
+
+  it 'refuses unpermitted plot types' do
+    expect(ROMDb::Search.new.title('Blade Runner').plot('fully'))
+      .to be false
+  end
+
+  it 'only accepts permitted plot types' do
+    expect(ROMDb::Search.new.title('Blade Runner').plot('full'))
+      .to be_a ROMDb::Search
+  end
+
+  it 'refuses unpermitted movie types' do
+    expect(ROMDb::Search.new.title('Blade Runner').type('documentary'))
+      .to be false
+  end
+
+  it 'only accepts permitted movie types' do
+    expect(ROMDb::Search.new.title('Blade Runner').type('movie'))
+      .to be_a ROMDb::Search
+  end
 end

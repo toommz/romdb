@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.description = 'Access OMDb API in Ruby (beta)'
   s.authors     = ['Thomas Battiston']
   s.email       = 'thomas.battiston@gmail.com'
-  s.files       = ['lib/romdb.rb', 'lib/romdb/search.rb', 'lib/romdb/request.rb', 'lib/romdb/response.rb']
+  s.files       = Dir.glob('lib/**/*')
   s.homepage    = 'http://rubygems.org/gems/romdb'
   s.license     = 'MIT'
 
